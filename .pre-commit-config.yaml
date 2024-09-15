@@ -1,0 +1,37 @@
+exclude: .idea|.git|.vscode
+default_stages: [commit, push]
+repos:
+  - repo: local
+    hooks:
+      - id: autoupdate
+        name: autoupdate
+        entry: pre-commit
+        language: system
+        pass_filenames: false
+        args: ["autoupdate"]
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.6.0
+    hooks:
+      - id: trailing-whitespace
+      - id: end-of-file-fixer
+      - id: debug-statements
+      - id: check-yaml
+        args: ["--unsafe"]
+      - id: check-json
+      - id: check-toml
+      - id: check-xml
+      - id: check-case-conflict
+      - id: check-merge-conflict
+      - id: check-symlinks
+      - id: detect-private-key
+      - id: sort-simple-yaml
+  - repo: https://github.com/google/yamlfmt
+    rev: v0.13.0
+    hooks:
+      - id: yamlfmt
+  - repo: https://github.com/charliermarsh/ruff-pre-commit
+    rev: v0.6.5
+    hooks:
+      - id: ruff-format
+      - id: ruff
+        args: ["--fix"]
