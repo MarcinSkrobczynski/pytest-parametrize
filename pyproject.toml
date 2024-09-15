@@ -1,0 +1,52 @@
+[build-system]
+requires = ["poetry_core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry]
+name = "pytest-parametrize"
+version = "0.1.0"
+description = "pytest decorator for parametrizing test cases in a dict-way"
+readme = "README.md"
+authors = ["Marcin Skrobczyński <marcin@skrobczynski.pl>"]
+license = "MIT"
+keywords = ["pytest", "parametrize", "testing"]
+homepage = "https://github.com/MarcinSkrobczynski/pytest-parametrize"
+
+[tool.poetry.dependencies]
+python = "^3.12"
+pytest = "^8.3.0"
+
+[tool.poetry.group.dev.dependencies]
+pre-commit = "^3.8.0"
+ruff = "^0.6.0"
+
+[tool.ruff]
+line-length = 120
+indent-width = 4
+
+[tool.ruff.lint]
+select = [
+    "E", # pycodestyle errors
+    "W", # pycodestyle warnings
+    "F", # pyflakes
+    "C90", # mccabe
+    "UP", # pyupgrade
+    "I", # isort
+    "B", # flake8-bugbear
+    "A", # flake8-builtins
+    "C4", # flake8-comprehensions
+    "T10", # flake8-debugger
+    "T20", # flake8-print
+    "SIM", # flake8-simplify
+    "S", # flake8-bandit
+]
+
+[tool.ruff.lint.mccabe]
+max-complexity = 10
+
+[tool.ruff.format]
+quote-style = "double"
+indent-style = "space"
+skip-magic-trailing-comma = false
+line-ending = "auto"
+docstring-code-format = false
