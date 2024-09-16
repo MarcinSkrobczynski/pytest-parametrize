@@ -1,0 +1,42 @@
+name: Bump Poetry Version
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  bump_version:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.x"
+      - name: Install dependencies
+        run: |
+          python -m pip install -U pip poetry
+          poetry --version
+      - name: Bump version
+        run: |
+          poetry version patch
+      - name: Commit version bump
+        run: |
+          git config --global user.name "Github Version Bumper"
+          git config --global user.email "version_bumper@github.com"
+          git add pyproject.toml
+          git commit -m "Bump version to $(poetry version --short)"
+          git push origin main
+      - name: Create Git tag
+        run: |
+          git tag v$(poetry version --short)
+          git push origin v$(poetry version --short)
+      - name: Create GitHub Release
+        uses: actions/create-release@v1
+        with:
+          tag_name: v$(poetry version --short)
+          release_name: v$(poetry version --short)
+          draft: false
+          prerelease: false
