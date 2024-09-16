@@ -15,6 +15,7 @@ def parametrize(raw_test_cases: dict[str, Union[TestCase, ListSubTestCases]]) ->
 
     Example:
     ```
+    import pytest
     from pytest_parametrize import parametrize
 
     @parametrize(
@@ -25,6 +26,7 @@ def parametrize(raw_test_cases: dict[str, Union[TestCase, ListSubTestCases]]) ->
                 {"a": 3, "b": 5, "c": 8},
                 {"a": 5, "b": 8, "c": 13},
                 {"a": 8, "b": 13, "c": 21},
+                {"a": 0, "b": 0, "c": 1, "marks": pytest.mark.xfail},
             ],
         },
     )

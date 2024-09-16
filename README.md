@@ -14,8 +14,9 @@ It is an alternative for the [pytest.mark.parametrize](https://docs.pytest.org/e
 ## Usage
 Decorate test function with test cases defined as a dictionary.
 
-Example:
+### Example:
 ```python
+import pytest
 from pytest_parametrize import parametrize
 
 @parametrize(
@@ -26,12 +27,18 @@ from pytest_parametrize import parametrize
             {"a": 3, "b": 5, "c": 8},
             {"a": 5, "b": 8, "c": 13},
             {"a": 8, "b": 13, "c": 21},
+            {"a": 0, "b": 0, "c": 1, "marks": pytest.mark.xfail},
         ],
     },
 )
 def test_something(a, b, c):
     assert a + b == c
 ```
+
+### Description
+Decorator takes dict, which:
+- keys define names of the test cases, and
+- values define named arguments in dict manner (or list of such dicts), which are passed to the decorated test function.
 
 ## Installation
 
