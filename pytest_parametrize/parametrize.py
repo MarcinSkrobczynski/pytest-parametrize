@@ -45,10 +45,13 @@ def parametrize(raw_test_cases: dict[str, Union[TestCase, ListSubTestCases]]) ->
 
         for case in cases:
             sorted_case = dict(sorted(case.items()))
+            marks = sorted_case.pop("marks", ())
             arguments.add(tuple(sorted_case.keys()))
-            test_cases.append(pytest.param(*sorted_case.values(), id=identifier))
+            test_cases.append(pytest.param(*sorted_case.values(), id=identifier, marks=marks))
 
     if len(arguments) != 1:
         raise ValueError(f"defined parameters should be the same for all raw test cases\n{arguments}")
 
-    return pytest.mark.parametrize(tuple(arguments.pop()), test_cases)
+    args = tuple(arguments.pop())
+
+    return pytest.mark.parametrize(args, test_cases)

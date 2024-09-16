@@ -1,3 +1,5 @@
+import pytest
+
 from pytest_parametrize import parametrize
 
 
@@ -16,6 +18,7 @@ from pytest_parametrize import parametrize
             {"a": 2, "b": 10, "expected": 20},
             {"a": 4, "b": 5, "expected": 20},
         ],
+        "test-case-6": {"a": 0, "b": 11, "expected": 11, "marks": pytest.mark.xfail},
     }
 )
 def test_parametrize(a: int, b: int, expected: int):
