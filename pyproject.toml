@@ -42,6 +42,12 @@ pytest-mock = "^3.14.0"
 
 [tool.poetry.group.lint.dependencies]
 ruff = "^0.6.0"
+mypy = "^1.11.2"
+types-setuptools = [
+    {version = "^74.1.0.20240907", python = "<3.10"}
+]
+types-colorama = "^0.4.15.20240311"
+types-pygments = "^2.18.0.20240506"
 
 [tool.ruff]
 line-length = 120
