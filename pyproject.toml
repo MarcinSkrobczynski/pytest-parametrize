@@ -4,7 +4,7 @@ build-backend = "poetry.core.masonry.api"
 
 [tool.poetry]
 name = "pytest-parametrize"
-version = "1.0.2"
+version = "1.1.0"
 description = "pytest decorator for parametrizing test cases in a dict-way"
 readme = "README.md"
 authors = ["Marcin Skrobczyński <marcin@skrobczynski.pl>"]
