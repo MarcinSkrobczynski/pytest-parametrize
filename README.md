@@ -1,3 +1,11 @@
+[![image](https://img.shields.io/pypi/v/pytest-parametrize.svg)](https://pypi.org/project/pytest-parametrize/)
+[![image](https://img.shields.io/pypi/pyversions/pytest-parametrize.svg)](https://pypi.org/project/pytest-parametrize/)
+[![image](https://img.shields.io/pypi/status/pytest-parametrize.svg)](https://pypi.org/project/pytest-parametrize/)
+
+[![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/MarcinSkrobczynski/pytest-parametrize/build_and_deploy.yml?label=build&logo=github&logoColor=white&style=flat-square)](https://github.com/MarcinSkrobczynski/pytest-parametrize/actions/workflows/build_and_deploy.yml)
+[![pre-commit](https://img.shields.io/badge/pre--commit-enabled-brightgreen?style=flat-square&logo=pre-commit&logoColor=white)](https://github.com/pre-commit/pre-commit)
+[![image](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/astral-sh/ruff/main/assets/badge/v2.json)](https://github.com/astral-sh/ruff)
+
 # pytest-parametrize
 
 [pytest](https://pytest.org/) decorator for parametrizing test cases in a dict-way.
