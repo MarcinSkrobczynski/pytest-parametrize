@@ -1,9 +1,17 @@
-name: Bump Poetry Version
+name: Bump Version
 
 on:
-  push:
-    branches:
-      - main
+  workflow_dispatch:
+    inputs:
+      part:
+        description: Which part is bumped
+        required: true
+        default: patch
+        type: choice
+        options:
+          - patch
+          - minor
+          - major
 
 jobs:
   bump_version:
@@ -23,7 +31,7 @@ jobs:
           poetry --version
       - name: Bump version
         run: |
-          poetry version patch
+          poetry version ${{ inputs.part }}
       - name: Commit version bump
         run: |
           git config --global user.name "Github Version Bumper"
