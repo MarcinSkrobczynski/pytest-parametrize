@@ -1,9 +1,28 @@
-from typing import Any, Dict, List, Union
+from collections.abc import Sequence
+from typing import Any, Collection, Dict, List, Union
 
 import pytest
 
 TestCase = Dict[str, Any]
 ListSubTestCases = List[TestCase]
+
+
+class InvalidMarkDecorator(Exception):
+    pass
+
+
+def _assert_mark_decorator(marks: Union[pytest.MarkDecorator, Collection[pytest.MarkDecorator]]) -> None:
+    """
+    Raise exception if provided marks is/are invalid.
+
+    :param marks: MarkDecorator or Collection of MarkDecorators
+    :return: None
+    """
+    if not isinstance(marks, Sequence):
+        marks = (marks,)
+
+    if not all(isinstance(m, pytest.MarkDecorator) for m in marks):
+        raise InvalidMarkDecorator
 
 
 def parametrize(raw_test_cases: dict[str, Union[TestCase, ListSubTestCases]]) -> pytest.MarkDecorator:
@@ -48,6 +67,7 @@ def parametrize(raw_test_cases: dict[str, Union[TestCase, ListSubTestCases]]) ->
         for case in cases:
             sorted_case = dict(sorted(case.items()))
             marks = sorted_case.pop("marks", ())
+            _assert_mark_decorator(marks)
             arguments.add(tuple(sorted_case.keys()))
             test_cases.append(pytest.param(*sorted_case.values(), id=identifier, marks=marks))
 

@@ -1,3 +1,3 @@
-from pytest_parametrize.parametrize import parametrize
+from pytest_parametrize.parametrize import InvalidMarkDecorator, parametrize
 
-__all__ = ["parametrize"]
+__all__ = ["parametrize", "InvalidMarkDecorator"]

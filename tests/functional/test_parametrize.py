@@ -1,6 +1,6 @@
 import pytest
 
-from pytest_parametrize import parametrize
+from pytest_parametrize import InvalidMarkDecorator, parametrize
 
 
 @parametrize(
@@ -23,3 +23,25 @@ from pytest_parametrize import parametrize
 )
 def test_parametrize(a: int, b: int, expected: int):
     assert a * b == expected
+
+
+@parametrize(
+    {
+        "single-value": {"marks_value": 10},
+        "collection": [
+            {"marks_value": [10]},
+            {"marks_value": [pytest.mark.xfail, 10]},
+            {"marks_value": [10, pytest.mark.xfail, pytest.mark.skip]},
+        ],
+    }
+)
+def test_parametrize__when_marks_invalid(marks_value):
+    with pytest.raises(InvalidMarkDecorator):
+
+        @parametrize(
+            {
+                "case": {"a": 1, "marks": marks_value},
+            }
+        )
+        def test(a: int):
+            pass
