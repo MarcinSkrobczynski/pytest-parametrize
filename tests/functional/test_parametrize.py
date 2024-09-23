@@ -27,6 +27,22 @@ def test_parametrize(a: int, b: int, expected: int):
 
 @parametrize(
     {
+        "a=1": {"a": 1},
+        "a=2": {"a": 2},
+    }
+)
+@parametrize(
+    {
+        "b=1": {"b": 1},
+        "b=2": {"b": 2},
+    }
+)
+def test_parametrize__when_complex_structure(a: int, b: int):
+    assert a * b > 0
+
+
+@parametrize(
+    {
         "single-value": {"marks_value": 10},
         "collection": [
             {"marks_value": [10]},

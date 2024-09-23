@@ -15,6 +15,8 @@ It is an alternative for the [pytest.mark.parametrize](https://docs.pytest.org/e
 Decorate test function with test cases defined as a dictionary.
 
 ### Example:
+
+#### Simple
 ```python
 import pytest
 from pytest_parametrize import parametrize
@@ -33,6 +35,26 @@ from pytest_parametrize import parametrize
 )
 def test_something(a, b, c):
     assert a + b == c
+```
+
+#### Or more complex one:
+```python
+from pytest_parametrize import parametrize
+
+@parametrize(
+    {
+        "a=1": {"a": 1},
+        "a=2": {"a": 2},
+    }
+)
+@parametrize(
+    {
+        "b=1": {"b": 1},
+        "b=2": {"b": 2},
+    }
+)
+def test_parametrize__when_complex_structure(a: int, b: int):
+    assert a * b > 0
 ```
 
 ### Description
