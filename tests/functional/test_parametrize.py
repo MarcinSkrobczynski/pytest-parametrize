@@ -19,6 +19,7 @@ from pytest_parametrize import InvalidMarkDecorator, parametrize
             {"a": 4, "b": 5, "expected": 20},
         ],
         "test-case-6": {"a": 0, "b": 11, "expected": 11, "marks": pytest.mark.xfail},
+        "test-case-7": {"a": 0, "b": 11, "expected": 11, "marks": [pytest.mark.xfail, pytest.mark.skip]},
     }
 )
 def test_parametrize(a: int, b: int, expected: int):
