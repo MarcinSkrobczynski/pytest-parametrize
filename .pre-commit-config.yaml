@@ -1,5 +1,5 @@
 exclude: .idea|.git|.vscode
-default_stages: [commit, push]
+default_stages: [pre-commit, pre-push]
 repos:
   - repo: local
     hooks:
@@ -10,7 +10,7 @@ repos:
         pass_filenames: false
         args: ["autoupdate"]
   - repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: v4.6.0
+    rev: v5.0.0
     hooks:
       - id: trailing-whitespace
       - id: end-of-file-fixer
@@ -26,16 +26,16 @@ repos:
       - id: detect-private-key
       - id: sort-simple-yaml
   - repo: https://github.com/google/yamlfmt
-    rev: v0.13.0
+    rev: v0.14.0
     hooks:
       - id: yamlfmt
   - repo: https://github.com/charliermarsh/ruff-pre-commit
-    rev: v0.6.7
+    rev: v0.7.3
     hooks:
       - id: ruff-format
       - id: ruff
         args: ["--fix"]
   - repo: https://github.com/pre-commit/mirrors-mypy
-    rev: v1.11.2
+    rev: v1.13.0
     hooks:
       - id: mypy

@@ -17,6 +17,7 @@ def _assert_mark_decorator(marks: Union[pytest.MarkDecorator, Collection[pytest.
 
     :param marks: MarkDecorator or Collection of MarkDecorators
     :return: None
+    :raises InvalidMarkDecorator if provided marks are invalid
     """
     if not isinstance(marks, Sequence):
         marks = (marks,)
@@ -31,6 +32,8 @@ def parametrize(raw_test_cases: dict[str, Union[TestCase, ListSubTestCases]]) ->
 
     :param raw_test_cases: dictionary with values as dictionary or list of dictionaries
     :return: pytest.MarkDecorator with parametrized test cases
+    :raises ValueError if raw test case is neither dict nor list
+    :raises ValueError if number of parameters differs
 
     Example:
     ```
@@ -65,7 +68,7 @@ def parametrize(raw_test_cases: dict[str, Union[TestCase, ListSubTestCases]]) ->
             raise ValueError("raw test case should be a dict or list")
 
         for case in cases:
-            sorted_case = dict(sorted(case.items()))
+            sorted_case: dict = dict(sorted(case.items()))
             marks = sorted_case.pop("marks", ())
             _assert_mark_decorator(marks)
             arguments.add(tuple(sorted_case.keys()))
