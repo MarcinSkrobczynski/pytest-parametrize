@@ -32,9 +32,6 @@ classifiers = [
 [tool.poetry.dependencies]
 python = "^3.9"
 pytest = "^8.3.0"
-setuptools = [
-    {version = "^75.0.0", python = "<3.10"}
-]
 
 [tool.poetry.group.dev.dependencies]
 pre-commit = ">=3.8,<5.0"
