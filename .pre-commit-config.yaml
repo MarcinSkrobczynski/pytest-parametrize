@@ -26,16 +26,16 @@ repos:
       - id: detect-private-key
       - id: sort-simple-yaml
   - repo: https://github.com/google/yamlfmt
-    rev: v0.14.0
+    rev: v0.17.0
     hooks:
       - id: yamlfmt
   - repo: https://github.com/charliermarsh/ruff-pre-commit
-    rev: v0.7.3
+    rev: v0.11.13
     hooks:
       - id: ruff-format
       - id: ruff
         args: ["--fix"]
   - repo: https://github.com/pre-commit/mirrors-mypy
-    rev: v1.13.0
+    rev: v1.16.0
     hooks:
       - id: mypy
