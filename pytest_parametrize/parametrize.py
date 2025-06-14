@@ -1,10 +1,10 @@
-from collections.abc import Sequence
-from typing import Any, Collection, Dict, List, Union
+from collections.abc import Collection, Sequence
+from typing import Any, Union
 
 import pytest
 
-TestCase = Dict[str, Any]
-ListSubTestCases = List[TestCase]
+TestCase = dict[str, Any]
+ListSubTestCases = list[TestCase]
 
 
 class InvalidMarkDecorator(Exception):
@@ -19,10 +19,9 @@ def _assert_mark_decorator(marks: Union[pytest.MarkDecorator, Collection[pytest.
     :return: None
     :raises InvalidMarkDecorator if provided marks are invalid
     """
-    if not isinstance(marks, Sequence):
-        marks = (marks,)
+    _marks = (marks,) if not isinstance(marks, Sequence) else marks
 
-    if not all(isinstance(m, pytest.MarkDecorator) for m in marks):
+    if not all(isinstance(m, pytest.MarkDecorator) for m in _marks):
         raise InvalidMarkDecorator
 
 
