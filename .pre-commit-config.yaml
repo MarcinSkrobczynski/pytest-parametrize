@@ -10,7 +10,7 @@ repos:
         pass_filenames: false
         args: ["autoupdate"]
   - repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: v5.0.0
+    rev: v6.0.0
     hooks:
       - id: trailing-whitespace
       - id: end-of-file-fixer
@@ -26,16 +26,16 @@ repos:
       - id: detect-private-key
       - id: sort-simple-yaml
   - repo: https://github.com/google/yamlfmt
-    rev: v0.17.0
+    rev: v0.17.2
     hooks:
       - id: yamlfmt
   - repo: https://github.com/charliermarsh/ruff-pre-commit
-    rev: v0.11.13
+    rev: v0.13.2
     hooks:
       - id: ruff-format
       - id: ruff-check
         args: ["--fix"]
   - repo: https://github.com/pre-commit/mirrors-mypy
-    rev: v1.16.0
+    rev: v1.18.2
     hooks:
       - id: mypy
