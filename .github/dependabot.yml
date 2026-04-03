@@ -7,3 +7,10 @@ updates:
       interval: "daily"
     labels:
       - "dependencies"
+  # github-actions
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+    labels:
+      - "github-actions"
