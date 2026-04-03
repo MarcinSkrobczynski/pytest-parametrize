@@ -1,5 +1,5 @@
 from collections.abc import Collection, Sequence
-from typing import Any, Union
+from typing import Any
 
 import pytest
 
@@ -11,7 +11,7 @@ class InvalidMarkDecorator(Exception):
     pass
 
 
-def _assert_mark_decorator(marks: Union[pytest.MarkDecorator, Collection[pytest.MarkDecorator]]) -> None:
+def _assert_mark_decorator(marks: pytest.MarkDecorator | Collection[pytest.MarkDecorator]) -> None:
     """
     Raise exception if provided marks is/are invalid.
 
@@ -25,7 +25,7 @@ def _assert_mark_decorator(marks: Union[pytest.MarkDecorator, Collection[pytest.
         raise InvalidMarkDecorator
 
 
-def parametrize(raw_test_cases: dict[str, Union[TestCase, ListSubTestCases]]) -> pytest.MarkDecorator:
+def parametrize(raw_test_cases: dict[str, TestCase | ListSubTestCases]) -> pytest.MarkDecorator:
     """
     Decorate test function with parametrized test cases, provided as a dictionary.
 
