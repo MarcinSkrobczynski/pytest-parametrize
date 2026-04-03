@@ -38,6 +38,9 @@ pre-commit = ">=3.8,<5.0"
 pytest-cov = ">=5,<8"
 pytest-mock = "^3.14.0"
 types-pexpect = "^4.9.0.20260127"
+filelock = "^3.16.0"
+virtualenv = "^20.26.6"
+pygments = "^2.19.1"
 
 [tool.poetry.group.lint.dependencies]
 ruff = ">=0.6,<0.16"
